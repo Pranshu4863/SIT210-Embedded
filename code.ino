@@ -3,7 +3,6 @@
    Multiple Interrupts Example
 
    - Push button on pin D2 will toggle LED1
-   - PIR motion sensor on pin D3 will toggle LED2
    - Interrupts detect button presses and sensor triggers
    - Main loop checks "flags" and updates LEDs with debounce
 */
