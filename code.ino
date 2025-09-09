@@ -1,13 +1,3 @@
-/*
-  Refactored SAMD + DHT22 example
-  - Uses SAMDTimerInterrupt library for a hardware timer (1 Hz)
-  - Button toggles LED1 (with debounce)
-  - PIR toggles LED2 (with debounce)
-  - Timer toggles LED3 every second
-  - DHT22 temperature/humidity is read every 2 seconds
-
-*/
-
 #include <SAMDTimerInterrupt.h>  // Include timer library for SAMD-based boards
 #include "DHT.h"               // Include DHT sensor library
 
