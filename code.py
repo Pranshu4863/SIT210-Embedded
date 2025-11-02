@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Shebang line: tells the operating system to run this file with the system's python3 interpreter.
 """
-led_gui_tkinter.py
+led_gui.py
 SIT210 5.1P - Tkinter GUI to control 3 LEDs (Red, Green, Blue)
 Works on Raspberry Pi with gpiozero. Includes a simulation fallback so you can run
 it on a PC for testing (it will print simulated LED activity).
@@ -59,32 +59,32 @@ RED_PIN = 17
 # RED_PIN: GPIO pin number for the red LED (BCM numbering).
 GREEN_PIN = 27
 # GREEN_PIN: GPIO pin number for the green LED (BCM numbering).
-BLUE_PIN = 22
-# BLUE_PIN: GPIO pin number for the blue LED (BCM numbering).
+YELLOW_PIN = 22
+# YELLOW_PIN: GPIO pin number for the blue LED (BCM numbering).
 
 led_red = LED(RED_PIN)
 # Create an LED object for the red LED using the chosen pin. If gpiozero was imported
 # this is a real LED object controlling the hardware; otherwise it's the simulated class.
 led_green = LED(GREEN_PIN)
 # Create an LED object for the green LED.
-led_blue = LED(BLUE_PIN)
-# Create an LED object for the blue LED.
+led_yellow = LED(YELLOW_PIN)
+# Create an LED object for the yellow LED.
 
 def set_led(color):
-    """Turn one LED on and others off. color is 'red', 'green', 'blue', or 'off'."""
+    """Turn one LED on and others off. color is 'red', 'green', 'yellow', or 'off'."""
     # Function docstring: explains the behavior and the accepted values for the 'color' parameter.
     if color == 'red':
         # If the requested color is 'red', turn the red LED on and ensure the others are off.
-        led_red.on();   led_green.off(); led_blue.off()
+        led_red.on();   led_green.off(); led_yellow.off()
     elif color == 'green':
         # If the requested color is 'green', turn the green LED on and ensure the others are off.
-        led_red.off();  led_green.on();  led_blue.off()
-    elif color == 'blue':
-        # If the requested color is 'blue', turn the blue LED on and ensure the others are off.
-        led_red.off();  led_green.off(); led_blue.on()
+        led_red.off();  led_green.on();  led_yellow.off()
+    elif color == 'yellow':
+        # If the requested color is 'yellow', turn the yellow LED on and ensure the others are off.
+        led_red.off();  led_green.off(); led_yellow.on()
     else:  # 'off' or unknown
         # For 'off' or any unknown value, turn all LEDs off to be safe.
-        led_red.off();  led_green.off(); led_blue.off()
+        led_red.off();  led_green.off(); led_yellow.off()
 
 # --- GUI setup ---
 # The following lines create the main Tkinter window and configure basic layout and widgets.
@@ -115,7 +115,7 @@ def on_radio_change():
 # selected at a time. Each one specifies a value and the callback command to run when clicked.
 rb_red = ttk.Radiobutton(frame, text='Red',   value='red',   variable=selected, command=on_radio_change)
 rb_green = ttk.Radiobutton(frame, text='Green', value='green', variable=selected, command=on_radio_change)
-rb_blue = ttk.Radiobutton(frame, text='Blue',  value='blue',  variable=selected, command=on_radio_change)
+rb_blue = ttk.Radiobutton(frame, text='YELLOW',  value='yellow',  variable=selected, command=on_radio_change)
 rb_off = ttk.Radiobutton(frame, text='All Off', value='off', variable=selected, command=on_radio_change)
 
 rb_red.grid(column=0, row=0, sticky='w', pady=2)
